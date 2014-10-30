@@ -15,4 +15,6 @@ class Player
     end
     self
   end
+
+  # def get_move()
 end
