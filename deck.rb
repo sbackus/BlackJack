@@ -17,7 +17,7 @@ class Deck
     self
   end
 
-  def draw
+  def deal
   	return @cards.shift
   end
 

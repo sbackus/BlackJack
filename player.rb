@@ -1,4 +1,4 @@
-class Hand
+class Player
 
 	attr_reader :cards
 
@@ -9,9 +9,9 @@ class Hand
     end
   end
 
-  def draw(deck, n = 1)
+  def deal(deck, n = 1)
     n.times do
-      @cards << deck.draw unless deck.empty?
+      @cards << deck.deal unless deck.empty?
     end
     self
   end
