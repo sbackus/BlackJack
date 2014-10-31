@@ -1,12 +1,12 @@
+require './player_strategy.rb'
+
 class Player
 
 	attr_reader :cards
 
-  def initialize(cards = [])
+  def initialize(strategy = PlayerStrategy.new)
+    @strategy = strategy
     @cards = []
-    cards.each do |card|
-      @cards << card
-    end
   end
 
   def deal(deck, n = 1)
@@ -16,5 +16,7 @@ class Player
     self
   end
 
-  # def get_move()
+  def hit?
+    @strategy.hit?
+  end
 end

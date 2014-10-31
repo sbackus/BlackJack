@@ -4,17 +4,18 @@ require './player.rb'
 describe Player do
 	describe '#initialize' do
 		context 'no params' do
-			it 'creates an player with no cards' do
+			it 'creates an player with a default strategy and no cards' do
 				player = Player.new
 				expect(player.cards).to eq []
+				expect(player).to respond_to(:hit?)
 			end
 		end
 		context 'with params' do
-			it 'creates a player with the cards specified' do
-				Ace_of_Clubs = Card.new('A','Clubs')
-				King_of_Spades = Card.new('King','Spades')
-				player = Player.new([Ace_of_Clubs, King_of_Spades])
-				expect(player.cards).to eq [Ace_of_Clubs,King_of_Spades]
+			it 'creates a player with the given strategy' do
+				strategy =  double("strategy")
+				allow(strategy).to receive_messages(:hit? => :return_value)
+    		player = Player.new(strategy)
+    		expect(player.hit?).to be(:return_value)
 			end
 		end
 	end

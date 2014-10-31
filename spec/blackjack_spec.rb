@@ -13,4 +13,5 @@ describe BlackJack do
 			expect(blackjack.dealer.cards.size).to eq 2
 		end
 	end
+
 end
