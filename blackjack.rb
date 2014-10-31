@@ -7,4 +7,12 @@ class BlackJack
 		@players.each {|player| player.deal(@deck, 2) }
 	end
 
+	def play
+		@players.each do |player|
+			while((not player.bust?) && player.hit?)
+
+			end
+		end
+	end
+
 end

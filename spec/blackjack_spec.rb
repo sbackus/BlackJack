@@ -14,12 +14,23 @@ describe BlackJack do
 	end
 
 	describe '#play' do
-		it 'asks a player if they want to hit until they stand or bust' do
-				# strategy =  double("strategy")
-				# allow(strategy).to receive_messages(:hit? => false)
-    # 		blackjack.player = Player.new(strategy)
-    # 		expect(player.hit?).to be(:return_value)
+		it 'stops asking the player if they want to hit when they stand' do
+				player =  spy("player")
+				allow(player).to receive(:hit?).and_return(true, false)
+				allow(player).to receive(:bust?).and_return(false)
+    		blackjack = BlackJack.new([player])
+    		blackjack.play
+    		expect(player).to have_received(:hit?).twice
 		end
+		it 'stops asking the player if they want to hit when they bust' do
+				player =  spy("player")
+				allow(player).to receive(:hit?).and_return(true)
+				allow(player).to receive(:bust?).and_return(false, false, true)
+    		blackjack = BlackJack.new([player])
+    		blackjack.play
+    		expect(player).to have_received(:hit?).twice
+		end
+
 	end
 
 end
