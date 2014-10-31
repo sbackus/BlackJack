@@ -1,12 +1,10 @@
 class BlackJack
-	attr_reader :player, :dealer
+	attr_reader :players
 
-	def initialize
-		@deck = Deck.new
-		@player = Player.new()
-		@dealer = Player.new()
-		@player.deal(@deck, 2)
-		@dealer.deal(@deck, 2)
+	def initialize(players = [Player.new,Player.new], deck = Deck.new)
+		@deck = deck
+		@players = players
+		@players.each {|player| player.deal(@deck, 2) }
 	end
 
 end
