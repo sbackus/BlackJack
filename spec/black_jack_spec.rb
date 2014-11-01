@@ -1,5 +1,5 @@
 require 'rspec'
-require './blackjack.rb'
+require './black_jack.rb'
 
 describe BlackJack do
 	subject(:blackjack) { BlackJack.new }
