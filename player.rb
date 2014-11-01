@@ -11,7 +11,8 @@ class Player
 
   def deal(deck, n = 1)
     n.times do
-      @cards << deck.deal unless deck.empty?
+      card = deck.deal unless deck.empty?
+      @cards << card
     end
     self
   end

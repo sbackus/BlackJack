@@ -28,7 +28,15 @@ describe BlackJack do
 				allow(player).to receive(:bust?).and_return(false, false, true)
     		blackjack = BlackJack.new([player])
     		blackjack.play
-    		expect(player).to have_received(:hit?).twice
+    		expect(player).to have_received(:deal).exactly(4).times
+		end
+		it 'deals a card to a player when they hit' do
+				player =  Player.new
+				allow(player).to receive(:hit?).and_return(true, false)
+    		blackjack = BlackJack.new([player])
+    		number_of_cards = player.cards.length
+    		blackjack.play
+    		expect(player.cards.length).to eq number_of_cards +1
 		end
 
 	end

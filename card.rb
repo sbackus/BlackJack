@@ -26,4 +26,8 @@ class Card
     	return @rank.to_i
     end
   end
+
+  def to_s
+    "#{@rank} of #{suit}"
+  end
 end
