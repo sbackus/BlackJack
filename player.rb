@@ -1,25 +1,29 @@
 require './player_strategy.rb'
+require './dealer_strategy.rb'
 
 class Player
 
-	attr_reader :cards
+	attr_reader :cards, :name
 
-  def initialize(strategy = PlayerStrategy.new , cards = [])
+  def initialize(strategy = PlayerStrategy.new, name = 'Player', cards = [])
+    @name = name
     @strategy = strategy
     @cards = cards
   end
 
   def deal(deck, n = 1)
+    card = nil
     n.times do
       card = deck.deal unless deck.empty?
       @cards << card
+      puts "\n#{name} was delt the #{card}"
     end
-    self
+    card
   end
 
   def hit?
-    puts "Players score: #{get_score}"
-    @strategy.hit?
+    puts "#{@name}'s score: #{get_score}"
+    @strategy.hit?(self)
   end
 
   def get_score
@@ -41,6 +45,10 @@ class Player
 
   def bust?
     get_score > 21
+  end
+
+  def to_s
+    name
   end
 
 end

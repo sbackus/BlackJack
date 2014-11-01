@@ -26,7 +26,7 @@ describe Player do
     		expect(player.hit?).to be(:return_value)
 			end
 			it 'creates a player with the cards specified' do
-				player = Player.new(nil, [@Ace_of_Clubs, @King_of_Spades])
+				player = Player.new(nil, 'Player', [@Ace_of_Clubs, @King_of_Spades])
 				expect(player.cards).to eq [@Ace_of_Clubs,@King_of_Spades]
 			end
 		end
@@ -35,13 +35,14 @@ describe Player do
 		let (:deck) {Deck.new}
 		context 'n is 0' do
 			it 'does not change the player or the deck' do
-				expect(player.deal(deck, 0)).to eq player
+				expect(player.deal(deck, 0)).to eq nil
 				expect(deck.cards.size).to eq 52
 			end
 		end
 		context 'n is 1' do
 			it 'puts one card from the deck into the player' do
-				expect(player.deal(deck, 1).cards.size).to eq 1
+				player.deal(deck, 1)
+				expect(player.cards.size).to eq 1
 				expect(deck.cards.size).to eq 51
 			end
 		end
@@ -51,19 +52,19 @@ describe Player do
 			expect(player.get_score).to eq 0
 		end
 		it 'is 10 if the player has one face card' do
-			player = Player.new(nil, [@King_of_Spades])
+			player = Player.new(nil, 'Player', [@King_of_Spades])
 			expect(player.get_score).to eq 10
 		end
 		it 'is 21 if the player has a face card and an Ace' do
-			player = Player.new(nil, [@King_of_Spades, @Ace_of_Clubs])
+			player = Player.new(nil, 'Player', [@King_of_Spades, @Ace_of_Clubs])
 			expect(player.get_score).to eq 21
 		end
 		it 'is 21 if the player has two face card and an Ace' do
-			player = Player.new(nil, [@King_of_Spades, @Ace_of_Clubs, @Queen_of_Diamonds])
+			player = Player.new(nil, 'Player', [@King_of_Spades, @Ace_of_Clubs, @Queen_of_Diamonds])
 			expect(player.get_score).to eq 21
 		end
 		it 'is 12 if the player has a face card and a Two' do
-			player = Player.new(nil, [@King_of_Spades, @Two_of_Hearts])
+			player = Player.new(nil, 'Player', [@King_of_Spades, @Two_of_Hearts])
 			expect(player.get_score).to eq 12
 		end
 	end

@@ -7,10 +7,6 @@ describe BlackJack do
 		it 'starts with some players' do
 			expect(blackjack.players).to_not be nil
 		end
-		it 'deals them each two cards' do
-			expect(blackjack.players[0].cards.size).to eq 2
-			expect(blackjack.players[1].cards.size).to eq 2
-		end
 	end
 
 	describe '#play' do
@@ -36,7 +32,7 @@ describe BlackJack do
     		blackjack = BlackJack.new([player])
     		number_of_cards = player.cards.length
     		blackjack.play
-    		expect(player.cards.length).to eq number_of_cards +1
+    		expect(player.cards.length).to eq 3
 		end
 
 	end
