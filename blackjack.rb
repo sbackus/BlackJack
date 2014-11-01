@@ -1,3 +1,6 @@
+require './player.rb'
+require './deck.rb'
+
 class BlackJack
 	attr_reader :players
 
@@ -16,3 +19,6 @@ class BlackJack
 	end
 
 end
+
+# game = BlackJack.new
+# game.play

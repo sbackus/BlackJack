@@ -67,4 +67,16 @@ describe Player do
 			expect(player.get_score).to eq 12
 		end
 	end
+	describe '#bust?' do
+		it 'returns false if the score is less than or equal to 21' do
+			player = Player.new
+			allow(player).to receive(:get_score).and_return(21)
+			expect(player.bust?).to be false
+		end
+		it 'returns true if the score is greater than 21' do
+			player = Player.new
+			allow(player).to receive(:get_score).and_return(22)
+			expect(player.bust?).to be true
+		end
+	end
 end

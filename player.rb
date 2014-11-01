@@ -17,7 +17,7 @@ class Player
   end
 
   def hit?
-    puts "Players score: {score}"
+    puts "Players score: #{get_score}"
     @strategy.hit?
   end
 
@@ -35,7 +35,11 @@ class Player
         score += card.rank.to_i
       end
     end
-    return score
+    score
+  end
+
+  def bust?
+    get_score > 21
   end
 
 end
