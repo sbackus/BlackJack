@@ -1,1 +1,3 @@
-The Card, Deck and Hand classes were inspired by jdan's rubycards: https://github.com/jdan/rubycards
+This is a simple game of Black Jack
+
+Inspiration for Card and Deck came from jdan's rubycards: https://github.com/jdan/rubycards
