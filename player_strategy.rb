@@ -1,7 +1,8 @@
 class PlayerStrategy
 	def hit?(player)
-		puts "Hit or stand (H/S):"
+		print "Hit or stand (H/S):"
 		move = gets.strip
+		puts ''
 		if  %w{H h HIT Hit hit}.include?(move)
 			return true
 		elsif %{S s STAND Stand stand}.include?(move)

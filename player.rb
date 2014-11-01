@@ -16,13 +16,13 @@ class Player
     n.times do
       card = deck.deal unless deck.empty?
       @cards << card
-      puts "\n#{name} was delt the #{card}"
+      puts "#{name} was delt the #{card}"
     end
     card
   end
 
   def hit?
-    puts "#{@name}'s score: #{get_score}"
+    puts "#{@name}'s score: #{get_score}\n\n"
     @strategy.hit?(self)
   end
 

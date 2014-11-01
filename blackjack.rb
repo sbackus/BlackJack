@@ -10,7 +10,7 @@ class BlackJack
 	end
 
 	def play
-		puts "Welcome to Black Jack!\n"
+		puts "\nWelcome to Black Jack!\n\n"
 		@players.each do |player|
 			player.deal(@deck, 2)
 			while(player.hit?)
